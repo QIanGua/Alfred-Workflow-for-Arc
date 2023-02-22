@@ -1,6 +1,11 @@
 *  Workflow for Arc Browser
+
+** Installation
+1. Download the alfred workflow 
+
 ** Usage
 *** 1. Listing all tabs then jump to one you want, e.g. `tabs`
+Holding the CTRL key while selecting an item will copy the selected tab URL to your clipboard.
 
 #+caption: Usage
 #+attr_html: :width 400 px
@@ -12,3 +17,9 @@
 #+attr_html: :width 400 px
 #+attr_html: :height 200 px
 [[./spaces.png]]
+
+** More Workflows
+- [[https://github.com/raycast/extensions/tree/8ac3315b76aa7570a0829e84345d154ef905a7e2/extensions/arc][arc extension in raycast]]
+- [[https://github.com/epilande/alfred-browser-tabs][alfred-browser-tabs]]
+- [[https://github.com/hellovietduc/arc-control][arc-control]] 
+ 
