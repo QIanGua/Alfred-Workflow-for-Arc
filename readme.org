@@ -1,6 +1,14 @@
 *  Workflow for Arc Browser
 ** Usage
+*** Listing all tabs then jump to one you want
+
 #+caption: Usage
 #+attr_html: :width 400 px
 #+attr_html: :height 200 px
 [[./usage.png]]
+*** Listing all spaces then go to one target
+
+#+caption: jump between spaces
+#+attr_html: :width 400 px
+#+attr_html: :height 200 px
+[[./space.png]]
