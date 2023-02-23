@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>www.Arc-Workflow.com</string>
+	<string>www.Arc_Tabs_Spaces.com</string>
 	<key>category</key>
 	<string>Custom</string>
 	<key>connections</key>
@@ -15,6 +15,19 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>A75E8990-19CF-44EC-BE21-099FFAC45962</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>71A380F3-0485-4F4C-A23A-A5A3F1F25BEC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F3D05BC4-CFCA-40E8-8B5F-7A261296159C</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -106,7 +119,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Arc Workflow</string>
+	<string>Arc Tabs and Spaces</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -155,6 +168,55 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>tabs</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading tabs...</string>
+				<key>script</key>
+				<string>./list-tabs.js</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>list-tabs</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Arc Tabs</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>9A413169-D486-4359-94C1-B61CA46043D5</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>action</key>
 				<integer>0</integer>
 				<key>argument</key>
@@ -184,51 +246,42 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>2</integer>
-				<key>argumenttreatemptyqueryasnil</key>
+				<key>autopaste</key>
 				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>keyword</key>
-				<string>hs</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
 				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Loading tabs...</string>
-				<key>script</key>
-				<string>./list-tabs.js</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>list-tabs</string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Arc Browsers - Tabs</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
+				<key>transient</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>9A413169-D486-4359-94C1-B61CA46043D5</string>
+			<string>A75E8990-19CF-44EC-BE21-099FFAC45962</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Copied to clipboard</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>AFF32444-0BD6-40DB-B11B-B832678A1FF6</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -261,46 +314,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>removeextension</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Copied to clipboard</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>AFF32444-0BD6-40DB-B11B-B832678A1FF6</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>A75E8990-19CF-44EC-BE21-099FFAC45962</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -314,7 +327,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>arcs</string>
+				<string>spaces</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -324,7 +337,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Loading spaces...</string>
 				<key>script</key>
 				<string>./list-spaces.js</string>
 				<key>scriptargtype</key>
@@ -334,7 +347,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>switch to a space in Arc Browser</string>
+				<string>Arc Spaces</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -370,15 +383,44 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>71A380F3-0485-4F4C-A23A-A5A3F1F25BEC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string>Watching URL</string>
+	<string>Arc Tabs and Spaces</string>
 	<key>uidata</key>
 	<dict>
 		<key>1B00241F-BE3C-4FFC-ABD0-8E93431AB936</key>
 		<dict>
 			<key>xpos</key>
-			<real>285</real>
+			<real>520</real>
 			<key>ypos</key>
 			<real>465</real>
 		</dict>
@@ -395,6 +437,13 @@
 			<real>520</real>
 			<key>ypos</key>
 			<real>325</real>
+		</dict>
+		<key>71A380F3-0485-4F4C-A23A-A5A3F1F25BEC</key>
+		<dict>
+			<key>xpos</key>
+			<real>60</real>
+			<key>ypos</key>
+			<real>465</real>
 		</dict>
 		<key>9A413169-D486-4359-94C1-B61CA46043D5</key>
 		<dict>
@@ -434,14 +483,18 @@
 		<key>F3D05BC4-CFCA-40E8-8B5F-7A261296159C</key>
 		<dict>
 			<key>xpos</key>
-			<real>60</real>
+			<real>270</real>
 			<key>ypos</key>
 			<real>465</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
 	<key>webaddress</key>
-	<string>qiangua.me</string>
+	<string>https://github.com/QIanGua/Alfred-Workflow-for-Arc</string>
 </dict>
 </plist>
