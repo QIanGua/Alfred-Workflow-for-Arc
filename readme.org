@@ -1,7 +1,7 @@
 *  Workflow for Arc Browser
 
 ** Installation
-1. Download the alfred workflow 
+1. Download the alfred workflow from official gallery [[https://alfred.app/workflows/caicailiushui/arc-tabs-and-spaces/]]
 
 ** Usage
 *** 1. Listing all tabs then jump to one you want, e.g. `tabs`
