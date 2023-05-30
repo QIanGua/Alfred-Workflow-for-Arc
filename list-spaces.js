@@ -24,20 +24,26 @@ function run(args) {
   let spacesId = browser.windows.spaces.id();
   console.log("spacesId: ", spacesId);
 
-  let result = { "items": [] };
+  let result = { items: [] };
 
   for (let w = 0; w < windowCount; w++) {
+    if (w !== 0) {
+      continue;
+    }
     for (let s = 0; s < spaceCount; s++) {
-      let item = {
-        "title": browser.windows[w].spaces[s].title(),
-        "subtitle": browser.windows[w].spaces[s].id(),
-        "arg": `${w},${s}`,
-      };
-      result.items.push(item);
+      try {
+        let item = {
+          title: browser.windows[w].spaces[s].title(),
+          subtitle: browser.windows[w].spaces[s].id(),
+          arg: `${w},${s}`,
+        };
+        result.items.push(item);
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 
   console.log(JSON.stringify({ items: result.items }));
   return JSON.stringify({ items: result.items });
 }
-
