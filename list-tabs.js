@@ -34,25 +34,27 @@ function run(args) {
 
   for (let w = 0; w < windowCount; w++) {
     for (let s = 0; s < spaceCount; s++) {
-      for (let t = 0; t < tabsTitle[w][s].length; t++) {
-        let url = tabsUrl[w][s][t] || "";
-        let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
-        let title = tabsTitle[w][s][t] || matchUrl;
+      if (tabsTitle[w][s]) {
+        for (let t = 0; t < tabsTitle[w][s].length; t++) {
+          let url = tabsUrl[w][s][t] || "";
+          let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
+          let title = tabsTitle[w][s][t] || matchUrl;
 
-        tabsMap[url] = {
-          title,
-          url,
-          subtitle: url,
-          windowIndex: w,
-          spaceIndex: s,
-          tabIndex: t,
-          quicklookurl: url,
-          arg: `${w},${s},${t},${url}`,
-          match: `${title} ${decodeURIComponent(matchUrl).replace(
-            /[^\w]/g,
-            " ",
-          )}`,
-        };
+          tabsMap[url] = {
+            title,
+            url,
+            subtitle: url,
+            windowIndex: w,
+            spaceIndex: s,
+            tabIndex: t,
+            quicklookurl: url,
+            arg: `${w},${s},${t},${url}`,
+            match: `${title} ${decodeURIComponent(matchUrl).replace(
+              /[^\w]/g,
+              " "
+            )}`,
+          };
+        }
       }
     }
   }
