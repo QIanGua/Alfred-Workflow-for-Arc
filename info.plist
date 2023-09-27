@@ -70,11 +70,44 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D60FBA97-C83F-4FAB-AA94-88CF1519EB75</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>EACD24BA-8F6E-41E5-9A24-CA7899C2DC9D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>686055B1-1373-4E1D-871E-414ADDCB45BD</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D9EBC3A3-64BC-4B54-86B1-D428E0E4C357</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>9A413169-D486-4359-94C1-B61CA46043D5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>D60FBA97-C83F-4FAB-AA94-88CF1519EB75</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -191,7 +224,7 @@
 				<key>runningsubtext</key>
 				<string>Loading tabs...</string>
 				<key>script</key>
-				<string>./list-tabs.js</string>
+				<string>./list-tabs.js pinned</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -240,6 +273,55 @@
 			<string>D9EBC3A3-64BC-4B54-86B1-D428E0E4C357</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>2</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>bm</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading bookmarks...</string>
+				<key>script</key>
+				<string>./list-tabs.js unpinned</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>list-tabs</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Arc Bookmarks</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D60FBA97-C83F-4FAB-AA94-88CF1519EB75</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -448,7 +530,7 @@
 			<key>xpos</key>
 			<real>270</real>
 			<key>ypos</key>
-			<real>165</real>
+			<real>105</real>
 		</dict>
 		<key>A75E8990-19CF-44EC-BE21-099FFAC45962</key>
 		<dict>
@@ -463,6 +545,13 @@
 			<real>945</real>
 			<key>ypos</key>
 			<real>325</real>
+		</dict>
+		<key>D60FBA97-C83F-4FAB-AA94-88CF1519EB75</key>
+		<dict>
+			<key>xpos</key>
+			<real>270</real>
+			<key>ypos</key>
+			<real>240</real>
 		</dict>
 		<key>D9EBC3A3-64BC-4B54-86B1-D428E0E4C357</key>
 		<dict>
@@ -488,10 +577,8 @@
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
-	<string>1.1</string>
+	<string>1.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/yinan-c/Alfred-Workflow-for-Arc</string>
 </dict>

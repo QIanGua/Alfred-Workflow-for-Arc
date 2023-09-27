@@ -13,6 +13,7 @@ function run(args) {
       ],
     });
   }
+  var excludeLocation = args[0] || "";
 
   let chrome = Application(browser);
   chrome.includeStandardAdditions = true;
@@ -41,16 +42,14 @@ function run(args) {
           let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
           let title = tabsTitle[w][s][t] || matchUrl;
           let location = tabsLocation[w][s][t] || "";
-/*
-          // only include tabs with "unpinned" location
-          if (location !== "unpinned") {
+          // exclude tabs from the current location
+          if (location == excludeLocation) {
             continue;
           }
-*/
           tabsMap[url] = {
             title,
             url,
-            subtitle: `${spacesTitle}-${location}: ${url}`,
+            subtitle: `${spacesTitle}: ${url}`,
             windowIndex: w,
             spaceIndex: s,
             tabIndex: t,
@@ -59,7 +58,7 @@ function run(args) {
             match: `${title} ${decodeURIComponent(matchUrl).replace(
               /[^\w]/g,
               " "
-            )} ${location} ${spacesTitle}`,
+            )} ${spacesTitle}`,
           };
         }
       }
