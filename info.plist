@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>www.Arc_Tabs_Spaces.com</string>
-	<key>category</key>
-	<string>Custom</string>
+	<string>com.Arc_Tabs_Spaces.www</string>
 	<key>connections</key>
 	<dict>
 		<key>1B00241F-BE3C-4FFC-ABD0-8E93431AB936</key>
@@ -493,8 +491,8 @@
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>webaddress</key>
-	<string>https://github.com/QIanGua/Alfred-Workflow-for-Arc</string>
+	<string>https://github.com/yinan-c/Alfred-Workflow-for-Arc</string>
 </dict>
 </plist>

@@ -31,19 +31,26 @@ function run(args) {
   let tabsUrl = chrome.windows.spaces.tabs.url();
   // console.log("tabsUrl: ", tabsUrl);
   let tabsMap = {};
-
+  let tabsLocation = chrome.windows.spaces.tabs.location();
   for (let w = 0; w < windowCount; w++) {
     for (let s = 0; s < spaceCount; s++) {
+      let spacesTitle = chrome.windows.spaces.name()[w][s];
       if (tabsTitle[w][s]) {
         for (let t = 0; t < tabsTitle[w][s].length; t++) {
           let url = tabsUrl[w][s][t] || "";
           let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
           let title = tabsTitle[w][s][t] || matchUrl;
-
+          let location = tabsLocation[w][s][t] || "";
+/*
+          // only include tabs with "unpinned" location
+          if (location !== "unpinned") {
+            continue;
+          }
+*/
           tabsMap[url] = {
             title,
             url,
-            subtitle: url,
+            subtitle: `${spacesTitle}-${location}: ${url}`,
             windowIndex: w,
             spaceIndex: s,
             tabIndex: t,
@@ -52,7 +59,7 @@ function run(args) {
             match: `${title} ${decodeURIComponent(matchUrl).replace(
               /[^\w]/g,
               " "
-            )}`,
+            )} ${location} ${spacesTitle}`,
           };
         }
       }
