@@ -235,7 +235,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Arc Tabs</string>
+				<string>Arc favourite tabs</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -356,7 +356,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Arc Tabs</string>
+				<string>Arc tabs</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -516,7 +516,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Arc Bookmarks</string>
+				<string>Arc bookmarks</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -735,6 +735,8 @@
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
+	<array/>
+	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
 	<string>1.3</string>
