@@ -21,72 +21,14 @@ function run(args) {
   let windowCount = chrome.windows.length;
   // console.log("windownCount: ", windowCount);
   if (excludeLocation == "topApp") {
-    let tabsTitle = chrome.windows[0].tabs.title();
-    let tabsUrl = chrome.windows[0].tabs.url();
-    let tabsLocation = chrome.windows[0].tabs.location();
-    for (let t = 0; t < tabsTitle.length; t++) {
-      let url = tabsUrl[t] || "";
-      let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
-      let title = tabsTitle[t] || matchUrl;
-      let location = tabsLocation[t] || "";
-      if (location != "topApp") {
-        continue;
-      }
-      tabsMap[url] = {
-        title,
-        url,
-        subtitle: `${url}`,
-        windowIndex: 0,
-        tabIndex: t,
-        quicklookurl: url,
-        arg: `${0},${t},${url}`,
-        match: `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")}`,
-      };
-    }
+    ListTopApps(chrome, tabsMap);
+  }
+  else if (excludeLocation == "") {
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation);
+    ListTopApps(chrome, tabsMap);
   }
   else {
-    let spaceCount = chrome.windows.spaces.length;
-    // console.log("spaceCount: ", spaceCount);
-
-    let tabsTitle =
-      browser === "Safari"
-        ? chrome.windows.spaces.tabs.name()
-        : chrome.windows.spaces.tabs.title();
-    // console.log("tabsTitle: ", tabsTitle);
-    let tabsUrl = chrome.windows.spaces.tabs.url();
-    // console.log("tabsUrl: ", tabsUrl);
-    let tabsLocation = chrome.windows.spaces.tabs.location();
-    for (let w = 0; w < windowCount; w++) {
-      for (let s = 0; s < spaceCount; s++) {
-        let spacesTitle = chrome.windows.spaces.name()[w][s];
-        if (tabsTitle[w][s]) {
-          for (let t = 0; t < tabsTitle[w][s].length; t++) {
-            let url = tabsUrl[w][s][t] || "";
-            let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
-            let title = tabsTitle[w][s][t] || matchUrl;
-            let location = tabsLocation[w][s][t] || "";
-            // exclude tabs from the current location
-            if (location == excludeLocation) {
-              continue;
-            }
-            tabsMap[url] = {
-              title,
-              url,
-              subtitle: `${spacesTitle}: ${url}`,
-              windowIndex: w,
-              spaceIndex: s,
-              tabIndex: t,
-              quicklookurl: url,
-              arg: `${0},${s},${t},${url}`,
-              match: `${title} ${decodeURIComponent(matchUrl).replace(
-                /[^\w]/g,
-                " "
-              )} ${spacesTitle}`,
-            };
-          }
-        }
-      }
-    }
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation);
   }
 
   let items = Object.keys(tabsMap).reduce((acc, url) => {
@@ -95,4 +37,78 @@ function run(args) {
   }, []);
 
   return JSON.stringify({ items });
+}
+
+function ListTopApps(chrome, tabsMap) {
+  let tabsTitle = chrome.windows[0].tabs.title();
+  let tabsUrl = chrome.windows[0].tabs.url();
+  let tabsLocation = chrome.windows[0].tabs.location();
+  for (let t = 0; t < tabsTitle.length; t++) {
+    let url = tabsUrl[t] || "";
+    let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
+    let title = tabsTitle[t] || matchUrl;
+    let location = tabsLocation[t] || "";
+    if (location != "topApp") {
+      continue;
+    }
+    args = `${0},undefined,${t},${url}`;
+    console.log("args: ", args);
+    tabsMap[url] = {
+      title,
+      url,
+      subtitle: `${url}`,
+      windowIndex: 0,
+      tabIndex: t,
+      quicklookurl: url,
+      arg: args,
+      match: `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")}`,
+    };
+  }
+}
+
+function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation) {
+  let spaceCount = chrome.windows.spaces.length;
+  // console.log("spaceCount: ", spaceCount);
+
+  let tabsTitle =
+    browser === "Safari"
+      ? chrome.windows.spaces.tabs.name()
+      : chrome.windows.spaces.tabs.title();
+  // console.log("tabsTitle: ", tabsTitle);
+  let tabsUrl = chrome.windows.spaces.tabs.url();
+  // console.log("tabsUrl: ", tabsUrl);
+  let tabsLocation = chrome.windows.spaces.tabs.location();
+  for (let w = 0; w < windowCount; w++) {
+    for (let s = 0; s < spaceCount; s++) {
+      let spacesTitle = chrome.windows.spaces.name()[w][s];
+      if (tabsTitle[w][s]) {
+        for (let t = 0; t < tabsTitle[w][s].length; t++) {
+          let url = tabsUrl[w][s][t] || "";
+          let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
+          let title = tabsTitle[w][s][t] || matchUrl;
+          let location = tabsLocation[w][s][t] || "";
+          // exclude tabs from the current location
+          if (location == excludeLocation) {
+            continue;
+          }
+          args = `${0},${s},${t},${url}`;
+          console.log("args: ", args);
+          tabsMap[url] = {
+            title,
+            url,
+            subtitle: `${spacesTitle}: ${url}`,
+            windowIndex: w,
+            spaceIndex: s,
+            tabIndex: t,
+            quicklookurl: url,
+            arg: args,
+            match: `${title} ${decodeURIComponent(matchUrl).replace(
+              /[^\w]/g,
+              " "
+            )} ${spacesTitle}`,
+          };
+        }
+      }
+    }
+  }
 }
