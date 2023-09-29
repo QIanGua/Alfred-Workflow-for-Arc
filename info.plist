@@ -762,7 +762,18 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Arc Tabs and Spaces</string>
+	<string>Arc Tabs and Spaces
+
+- `bms` to show bookmarks (pinned tabs)
+- `tabs` to show unpinned tabs
+- `atabs` to show all tabs
+- `tops` to show favorite (top) apps
+- `spaces` to list spaces
+
+Filter results by Space names (does not apply to `Favorites`), Title, URLs in located tabs list.
+And by Locations (`pinned`, `unpinned`, `topApp`/`Favorites`) in all tabs list
+
+`Enter` to show in Arc, `Control+Enter` on selected tabs to copy URL.</string>
 	<key>uidata</key>
 	<dict>
 		<key>1B00241F-BE3C-4FFC-ABD0-8E93431AB936</key>
@@ -880,8 +891,10 @@
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array/>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>1.4</string>
+	<string>1.4.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/yinan-c/Alfred-Workflow-for-Arc</string>
 </dict>

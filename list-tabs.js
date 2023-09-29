@@ -21,14 +21,14 @@ function run(args) {
   let windowCount = chrome.windows.length;
   // console.log("windownCount: ", windowCount);
   if (excludeLocation == "topApp") {
-    ListTopApps(chrome, tabsMap);
+    ListTopApps(chrome, tabsMap, false);
   }
   else if (excludeLocation == "") {
-    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation);
-    ListTopApps(chrome, tabsMap);
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, true);
+    ListTopApps(chrome, tabsMap, true);
   }
   else {
-    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation);
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, false);
   }
 
   let items = Object.keys(tabsMap).reduce((acc, url) => {
@@ -39,7 +39,7 @@ function run(args) {
   return JSON.stringify({ items });
 }
 
-function ListTopApps(chrome, tabsMap) {
+function ListTopApps(chrome, tabsMap, ifshowlocation) {
   let tabsTitle = chrome.windows[0].tabs.title();
   let tabsUrl = chrome.windows[0].tabs.url();
   let tabsLocation = chrome.windows[0].tabs.location();
@@ -52,21 +52,29 @@ function ListTopApps(chrome, tabsMap) {
       continue;
     }
     args = `${0},undefined,${t},${url}`;
-    console.log("args: ", args);
+    // console.log("args: ", args);
+    if (ifshowlocation) {
+      match = `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")} Favorites ${location}`;
+      subtitle = `Favorites: ${url}`;
+    }
+    else {
+      match = `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")}`;
+      subtitle = `${url}`;
+    }
     tabsMap[url] = {
       title,
       url,
-      subtitle: `${url}`,
+      subtitle: subtitle,
       windowIndex: 0,
       tabIndex: t,
       quicklookurl: url,
       arg: args,
-      match: `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")}`,
+      match: match,
     };
   }
 }
 
-function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation) {
+function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, ifshowlocation) {
   let spaceCount = chrome.windows.spaces.length;
   // console.log("spaceCount: ", spaceCount);
 
@@ -92,20 +100,25 @@ function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation) {
             continue;
           }
           args = `${0},${s},${t},${url}`;
-          console.log("args: ", args);
+          // console.log("args: ", args);
+          if (ifshowlocation) {
+            match = `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")} ${spacesTitle} ${location}`;
+            subtitle = `${spacesTitle}-${location}: ${url}`;
+          }
+          else {
+            match = `${title} ${decodeURIComponent(matchUrl).replace(/[^\w]/g, " ")} ${spacesTitle}`;
+            subtitle = `${spacesTitle}: ${url}`;
+          }
           tabsMap[url] = {
             title,
             url,
-            subtitle: `${spacesTitle}: ${url}`,
+            subtitle: subtitle,
             windowIndex: w,
             spaceIndex: s,
             tabIndex: t,
             quicklookurl: url,
             arg: args,
-            match: `${title} ${decodeURIComponent(matchUrl).replace(
-              /[^\w]/g,
-              " "
-            )} ${spacesTitle}`,
+            match: match,
           };
         }
       }
