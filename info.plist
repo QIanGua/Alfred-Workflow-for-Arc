@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.Arc_Tabs_Spaces.www</string>
+	<string>www.Arc_Tabs_Spaces.com</string>
 	<key>connections</key>
 	<dict>
 		<key>1B00241F-BE3C-4FFC-ABD0-8E93431AB936</key>
@@ -894,8 +894,8 @@ And by Locations (`pinned`, `unpinned`, `topApp`/`Favorites`) in all tabs list
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.4.1</string>
+	<string>1.4.2</string>
 	<key>webaddress</key>
-	<string>https://github.com/yinan-c/Alfred-Workflow-for-Arc</string>
+	<string>https://github.com/QIanGua/Alfred-Workflow-for-Arc</string>
 </dict>
 </plist>
