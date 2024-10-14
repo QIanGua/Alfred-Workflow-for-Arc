@@ -22,7 +22,7 @@ function run(args) {
   // console.log("windownCount: ", windowCount);
 
   ListSpaceTabs(chrome, tabsMap, browser, windowCount, true);
-  ListTopApps(chrome, tabsMap, favorite, true);
+  ListTopApps(chrome, tabsMap, true);
 
   let items = Object.keys(tabsMap).reduce((acc, url) => {
     const domain = getDomain(url);
