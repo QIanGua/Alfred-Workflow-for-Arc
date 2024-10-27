@@ -13,20 +13,27 @@ function run(args) {
       ],
     });
   }
+  var excludeLocation = args[0] || "";
 
   let chrome = Application(browser);
-  let favorite = args[0] ? getDomain(args[0]) : null;
+  let favorite = args[1] ? getDomain(args[1]) : null;
   chrome.includeStandardAdditions = true;
   let tabsMap = {};
   let windowCount = chrome.windows.length;
   // console.log("windownCount: ", windowCount);
-
-  ListSpaceTabs(chrome, tabsMap, browser, windowCount, true);
-  ListTopApps(chrome, tabsMap, true);
+  if (excludeLocation == "topApp") {
+    ListTopApps(chrome, tabsMap, false);
+  }
+  else if (excludeLocation == "") {
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, true);
+    ListTopApps(chrome, tabsMap, true);
+  }
+  else {
+    ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, false);
+  }
 
   let items = Object.keys(tabsMap).reduce((acc, url) => {
-    const domain = getDomain(url);
-    if (favorite === null || (favorite && domain === favorite)) {
+    if (favorite === null || getDomain(url) === favorite) {
       acc.push(tabsMap[url]);
     }
     return acc;
@@ -44,6 +51,9 @@ function ListTopApps(chrome, tabsMap, ifshowlocation) {
     let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
     let title = tabsTitle[t] || matchUrl;
     let location = tabsLocation[t] || "";
+    if (location != "topApp") {
+      continue;
+    }
     args = `${0},undefined,${t},${url}`;
     // console.log("args: ", args);
     if (ifshowlocation) {
@@ -67,7 +77,7 @@ function ListTopApps(chrome, tabsMap, ifshowlocation) {
   }
 }
 
-function ListSpaceTabs(chrome, tabsMap, browser, windowCount, ifshowlocation) {
+function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, ifshowlocation) {
   let spaceCount = chrome.windows.spaces.length;
   // console.log("spaceCount: ", spaceCount);
 
@@ -88,6 +98,10 @@ function ListSpaceTabs(chrome, tabsMap, browser, windowCount, ifshowlocation) {
           let matchUrl = url.replace(/(^\w+:|^)\/\//, "");
           let title = tabsTitle[w][s][t] || matchUrl;
           let location = tabsLocation[w][s][t] || "";
+          // exclude tabs from the current location
+          if (location == excludeLocation) {
+            continue;
+          }
           args = `${0},${s},${t},${url}`;
           // console.log("args: ", args);
           if (ifshowlocation) {
