@@ -13,9 +13,8 @@ function run(args) {
   // console.log("tabIndex:", tabIndex);
   if (spaceIndex == undefined) {
     Arc.windows[windowIndex].tabs[tabIndex].select();
-    Arc.activate();
   } else {
     Arc.windows[windowIndex].spaces[spaceIndex].tabs[tabIndex].select();
-    Arc.activate();
   }
+  Arc.activate();
 }
