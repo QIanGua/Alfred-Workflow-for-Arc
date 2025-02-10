@@ -16,6 +16,7 @@ function run(args) {
   var excludeLocation = args[0] || "";
 
   let chrome = Application(browser);
+  let favorite = args[1] ? getDomain(args[1]) : null;
   chrome.includeStandardAdditions = true;
   let tabsMap = {};
   let windowCount = chrome.windows.length;
@@ -32,7 +33,9 @@ function run(args) {
   }
 
   let items = Object.keys(tabsMap).reduce((acc, url) => {
-    acc.push(tabsMap[url]);
+    if (favorite === null || getDomain(url) === favorite) {
+      acc.push(tabsMap[url]);
+    }
     return acc;
   }, []);
 
@@ -124,4 +127,9 @@ function ListSpaceTabs(chrome, tabsMap, browser, windowCount, excludeLocation, i
       }
     }
   }
+}
+
+function getDomain(url) {
+  const result = url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?([^:\/\n?]+)/im);
+  return result[1] ?? null;
 }
